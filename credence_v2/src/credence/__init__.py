@@ -5,7 +5,7 @@ import pytorch_lightning as pl
 import tqdm
 import pytorch_lightning.callbacks.progress as pb
 
-import autoencoder
+from credence.credence_v2.src.credence import autoencoder
 
 
 class Credence:
@@ -65,9 +65,9 @@ class Credence:
             hidden_dim=hidden_dim,
             kld_rigidity=kld_rigidity,
         )  # .to('cuda:0')
-        bar = pb.ProgressBar()
+        bar = pb.ProgressBarBase()
         self.trainer_treat = pl.Trainer(
-            gpus=1,
+            #gpus=1,
             precision=16,
             limit_train_batches=0.5,
             max_epochs=max_epochs,
@@ -89,9 +89,9 @@ class Credence:
             kld_rigidity=kld_rigidity,
         )  # .to('cuda:0')
 
-        bar = pb.ProgressBar()
+        bar = pb.ProgressBarBase()
         self.trainer_pre = pl.Trainer(
-            gpus=1,
+            #gpus=1,
             precision=16,
             limit_train_batches=0.5,
             max_epochs=max_epochs,
@@ -117,9 +117,9 @@ class Credence:
             kld_rigidity=kld_rigidity,
         )  # .to('cuda:0')
 
-        bar = pb.ProgressBar()
+        bar = pb.ProgressBarBase()
         self.trainer_post = pl.Trainer(
-            gpus=1,
+            #gpus=1,
             precision=16,
             limit_train_batches=0.5,
             max_epochs=max_epochs,
